@@ -1,0 +1,6 @@
+@SS_OLA2_BACKEND_HostAddress = http://localhost:5193
+
+GET {{SS_OLA2_BACKEND_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
