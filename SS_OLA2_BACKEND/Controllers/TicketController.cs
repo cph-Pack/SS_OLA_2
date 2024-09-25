@@ -11,14 +11,15 @@ namespace SS_OLA2_BACKEND.Controllers
         [HttpGet]
         public ActionResult<Ticket> Get()
         {
-            Ticket ticket = new Ticket();
-            {
-                ticket.FirstName = "Patrick";
-                ticket.LastName = "Diekmann";
-                ticket.CompanyName = "CPH-Pack";
-                ticket.ChemicalType = "A";
-                ticket.KilogramWeight = 1;
-            }
+            Ticket ticket = new Ticket("Patrick", "Diekmann", "CPH-Pack", "A", 1);
+            // Dette kodestykke behøves ikke, da vi ovenfor opretter en ny ticket med constructor
+            //{
+            //    ticket.DriverFirstName = "Patrick";
+            //    ticket.DriverLastName = "Diekmann";
+            //    ticket.CompanyName = "CPH-Pack";
+            //    ticket.ChemicalType = "A";
+            //    ticket.AmountInKilos = 1;
+            //}
            return Ok(ticket);
         }
     }

@@ -12,7 +12,7 @@
         public DateTime JobDate { get; set; }
 
         // Jobtype (levering eller afhentning)
-        public string JobType { get; set; } // Delivery eller Collection
+        public string ShipmentType { get; set; } // Delivery eller Collection
 
         // Status på jobbet
         public string Status { get; set; } // F.eks. Pending, Completed, Cancelled
@@ -37,7 +37,7 @@
             {
                 throw new ArgumentException("Job type must be 'Delivery' or 'Collection'.");
             }
-            JobType = jobType;
+            ShipmentType = jobType;
 
             // Sætter status for jobbet
             Status = status;
