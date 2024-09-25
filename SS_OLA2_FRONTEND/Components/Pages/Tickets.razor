@@ -1,5 +1,5 @@
 ﻿@page "/tickets"
-@using SS_OLA2_FRONTEND.Data
+@using SS_OLA2_BACKEND.Data
 @rendermode InteractiveServer
 
 <PageTitle>Testing</PageTitle>
@@ -22,12 +22,16 @@
     <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
     <br />
 
-    <label for="KilogramWeight">Weight in KG:</label>
-    <InputNumber id="KilogramWeight" @bind-Value=@ticket.KilogramWeight></InputNumber>
+    <label for="Chemical Type A">Weight in KG:</label>
+    <InputNumber id="Type_A" @bind-Value=@ticket.Chemicals.Type_A></InputNumber>
     <br />
 
-    <label for="ChemicalType">Chemical type:</label>
-    <InputText id="ChemicalType" @bind-Value=@ticket.ChemicalType></InputText>
+    <label for="Chemical Type B">Weight in KG:</label>
+    <InputNumber id="Type_B" @bind-Value=@ticket.Chemicals.Type_B></InputNumber>
+    <br/>
+
+    <label for="Chemical Type C">Weight in KG:</label>
+    <InputNumber id="Type_C" @bind-Value=@ticket.Chemicals.Type_C></InputNumber>
     <br />
 
     <button type="submit">Click me!</button>
@@ -42,6 +46,6 @@
     {
         // remember to cast the context model to your class (Ticket) in this case
         Ticket ticket = (Ticket)context.Model;
-        Console.WriteLine($"{ticket.FirstName} {ticket.LastName} from {ticket.CompanyName} carries {ticket.KilogramWeight}KG of chemical type {ticket.ChemicalType}");
+        Console.WriteLine($"{ticket.FirstName} {ticket.LastName} from {ticket.CompanyName} carries {ticket.Chemicals.Type_A}KG of chemical type A");
     }
 }
