@@ -1,0 +1,47 @@
+﻿@page "/tickets"
+@using SS_OLA2_FRONTEND.Data
+@rendermode InteractiveServer
+
+<PageTitle>Testing</PageTitle>
+
+
+<EditForm Model=@ticket OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <label for="FirstName">First Name:</label>
+    <InputText id="FirstName" @bind-Value=@ticket.FirstName></InputText>
+    <br />
+
+    <label for="LastName">Last Name:</label>
+    <InputText id="LastName" @bind-Value=@ticket.LastName></InputText>
+    <br />
+
+    <label for="CompanyName">Company Name:</label>
+    
+    <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
+    <br />
+
+    <label for="KilogramWeight">Weight in KG:</label>
+    <InputNumber id="KilogramWeight" @bind-Value=@ticket.KilogramWeight></InputNumber>
+    <br />
+
+    <label for="ChemicalType">Chemical type:</label>
+    <InputText id="ChemicalType" @bind-Value=@ticket.ChemicalType></InputText>
+    <br />
+
+    <button type="submit">Click me!</button>
+</EditForm>
+
+@code {
+    // This youtube video shows how most of the things work https://www.youtube.com/watch?v=zOqgJJO-XtU 
+    // create an instance so we can bind the InputText tags to the models attributes
+    Ticket ticket = new();
+
+    public void HandleSubmit(EditContext context)
+    {
+        // remember to cast the context model to your class (Ticket) in this case
+        Ticket ticket = (Ticket)context.Model;
+        Console.WriteLine($"{ticket.FirstName} {ticket.LastName} from {ticket.CompanyName} carries {ticket.KilogramWeight}KG of chemical type {ticket.ChemicalType}");
+    }
+}
