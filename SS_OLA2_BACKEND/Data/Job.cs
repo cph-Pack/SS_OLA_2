@@ -1,4 +1,4 @@
-﻿namespace SS_OLA2_BACKEND
+﻿namespace SS_OLA2_BACKEND.Data
 {
     public class Job
     {
