@@ -1,10 +1,13 @@
 ﻿@page "/tickets"
 @using SS_OLA2_FRONTEND.Data
+@using System.Text.Json
+@using System.Text
 @rendermode InteractiveServer
 
 <PageTitle>Testing</PageTitle>
 
 
+<div>
 <EditForm Model=@ticket OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
@@ -33,15 +36,53 @@
     <button type="submit">Click me!</button>
 </EditForm>
 
+</div>
+<br />
+<br />
+<div>
+    <p>@responseResultMessage</p>
+</div>
+
 @code {
     // This youtube video shows how most of the things work https://www.youtube.com/watch?v=zOqgJJO-XtU 
-    // create an instance so we can bind the InputText tags to the models attributes
+    string responseResultMessage = "";
+    HttpClient httpClient = new()
+        {
+            BaseAddress = new Uri("https://localhost:7260"),
+        };
     Ticket ticket = new();
 
-    public void HandleSubmit(EditContext context)
+    // Task return value make Blazor update the responseResultMessage
+    public async Task HandleSubmit(EditContext context)
     {
+        // create an instance so we can bind the InputText tags to the models attributes
         // remember to cast the context model to your class (Ticket) in this case
-        Ticket ticket = (Ticket)context.Model;
-        Console.WriteLine($"{ticket.FirstName} {ticket.LastName} from {ticket.CompanyName} carries {ticket.KilogramWeight}KG of chemical type {ticket.ChemicalType}");
+        Ticket ticket = (Ticket) context.Model;
+
+        using StringContent jsonContent = new(
+        JsonSerializer.Serialize(new
+        {
+            FirstName = ticket.FirstName,
+            LastName = ticket.LastName,
+            CompanyName = ticket.CompanyName,
+            ChemicalType = ticket.ChemicalType,
+            KilogramWeight = ticket.KilogramWeight
+        }),
+        Encoding.UTF8,
+        "application/json");
+
+        using HttpResponseMessage response = await httpClient.PostAsync(
+        "ticket",
+        jsonContent);
+
+        if(response.IsSuccessStatusCode)
+        {
+            responseResultMessage = "The ticket has been ACCEPTED";
+        }
+        if(!response.IsSuccessStatusCode)
+        {
+            responseResultMessage = "The ticket has been REJECTED";
+        }
     }
+
 }
