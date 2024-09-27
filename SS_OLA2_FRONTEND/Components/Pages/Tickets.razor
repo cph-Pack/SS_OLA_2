@@ -8,37 +8,33 @@
 
 
 <div>
-<EditForm Model=@ticket OnValidSubmit="HandleSubmit">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <ValidationSummary></ValidationSummary>
+    <EditForm Model=@ticket OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
 
-    <label for="DriverFirstName">Driver First Name:</label>
-    <InputText id="DriverFirstName" @bind-Value=@ticket.DriverFirstName></InputText>
-    <br />
+        <label for="DriverFirstName">Driver First Name:</label>
+        <InputText id="DriverFirstName" @bind-Value=@ticket.DriverFirstName></InputText>
+        <br />
 
-    <label for="DriverLastName">Driver Last Name:</label>
-    <InputText id="DriverLastName" @bind-Value=@ticket.DriverLastName></InputText>
-    <br />
+        <label for="DriverLastName">Driver Last Name:</label>
+        <InputText id="DriverLastName" @bind-Value=@ticket.DriverLastName></InputText>
+        <br />
 
-    <label for="CompanyName">Company Name:</label>
-    
-    <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
-    <br />
+        <label for="CompanyName">Company Name:</label>
+
+        <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
+        <br />
 
         <label for="AmountInKilos">Weight in KG:</label>
-    <InputNumber id="AmountInKilos" @bind-Value=@ticket.AmountInKilos></InputNumber>
-    <br />
+        <InputNumber id="AmountInKilos" @bind-Value=@ticket.AmountInKilos></InputNumber>
+        <br />
 
-    <label for="Chemical Type B">Weight in KG:</label>
-    <InputNumber id="Type_B" @bind-Value=@ticket.Chemicals.Type_B></InputNumber>
-    <br/>
+        <label for="ChemicalType">Chemical type:</label>
+        <InputText id="ChemicalType" @bind-Value=@ticket.ChemicalType></InputText>
+        <br />
 
-    <label for="Chemical Type C">Weight in KG:</label>
-    <InputNumber id="Type_C" @bind-Value=@ticket.Chemicals.Type_C></InputNumber>
-    <br />
-
-    <button type="submit">Click me!</button>
-</EditForm>
+        <button type="submit">Click me!</button>
+    </EditForm>
 
 </div>
 <br />

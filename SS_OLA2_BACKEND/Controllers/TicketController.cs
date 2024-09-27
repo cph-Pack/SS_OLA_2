@@ -18,9 +18,9 @@ namespace SS_OLA2_BACKEND.Controllers
             string lastName = "Diekmann";
             string companyName = "CPH-Pack";
             string chemicalType = "A";
-            int kilogramWeight = 1;
+            int AmountInKilos = 1;
 
-            Ticket ticket = new Ticket(firstName,lastName, companyName, chemicalType, kilogramWeight);
+            Ticket ticket = new Ticket(firstName,lastName, companyName, chemicalType, AmountInKilos);
             return Ok(ticket);
         }
 
