@@ -16,8 +16,9 @@ namespace SS_OLA2_BACKEND.Controllers
                 ticket.FirstName = "Patrick";
                 ticket.LastName = "Diekmann";
                 ticket.CompanyName = "CPH-Pack";
-                ticket.ChemicalType = "A";
-                ticket.KilogramWeight = 1;
+                Chemicals chemicals = new Chemicals();
+                chemicals.Type_A = 1;
+                chemicals.Type_B = 3;
             }
            return Ok(ticket);
         }
