@@ -33,5 +33,10 @@ namespace SS_OLA2_BACKEND.Data
 
         [Required]
         public int Type_C { get; set; } = 0;
+
+        public class Ticket(string FirstName, string LastName, string CompanyName, Chemicals chemical, string ShimpentType)
+        {
+
+        }
     }
 }
