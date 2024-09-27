@@ -17,10 +17,15 @@ namespace SS_OLA2_BACKEND.Data
         [Required]
         public string ShipmentType { get; set; }
 
-        /*[Required]
-        public string ChemicalType { get; set; }
-        [Required]
-        public int KilogramWeight { get; set; }*/
+        public Ticket(string firstName, string lastName, string companyName, string shipmentType, Chemicals chemicals)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            CompanyName = companyName;
+            Chemicals = chemicals;
+            ShipmentType = shipmentType;
+
+        }
     }
 
     public class Chemicals
@@ -33,10 +38,5 @@ namespace SS_OLA2_BACKEND.Data
 
         [Required]
         public int Type_C { get; set; } = 0;
-
-        public class Ticket(string FirstName, string LastName, string CompanyName, Chemicals chemical, string ShimpentType)
-        {
-
-        }
     }
 }
