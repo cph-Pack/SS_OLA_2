@@ -1,9 +1,13 @@
-﻿namespace SS_OLA2_BACKEND.Data
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace SS_OLA2_BACKEND.Data
 {
     public class Job
     {
 
-        public Guid JobId { get; private set; }
+        [BsonId]
+        public ObjectId JobId { get; set; }
         public int StorageLocation { get; set; }
         public DateTime Date { get; set; }
         public JobType JobType { get; set; }
@@ -11,9 +15,6 @@
 
         public Job(int storageLocation, DateTime date, JobType jobType, string status)
         {
-            // Unikt ID
-            JobId = Guid.NewGuid();
-
             // Lagerlokationen (1 til 5)
             if (storageLocation < 1 || storageLocation > 5)
             {

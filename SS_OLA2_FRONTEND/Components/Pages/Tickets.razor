@@ -12,12 +12,12 @@
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
 
-    <label for="FirstName">First Name:</label>
-    <InputText id="FirstName" @bind-Value=@ticket.FirstName></InputText>
+    <label for="DriverFirstName">Driver First Name:</label>
+    <InputText id="DriverFirstName" @bind-Value=@ticket.DriverFirstName></InputText>
     <br />
 
-    <label for="LastName">Last Name:</label>
-    <InputText id="LastName" @bind-Value=@ticket.LastName></InputText>
+    <label for="DriverLastName">Driver Last Name:</label>
+    <InputText id="DriverLastName" @bind-Value=@ticket.DriverLastName></InputText>
     <br />
 
     <label for="CompanyName">Company Name:</label>
@@ -25,8 +25,8 @@
     <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
     <br />
 
-    <label for="KilogramWeight">Weight in KG:</label>
-    <InputNumber id="KilogramWeight" @bind-Value=@ticket.KilogramWeight></InputNumber>
+        <label for="AmountInKilos">Weight in KG:</label>
+    <InputNumber id="AmountInKilos" @bind-Value=@ticket.AmountInKilos></InputNumber>
     <br />
 
     <label for="ChemicalType">Chemical type:</label>
@@ -62,11 +62,11 @@
         using StringContent jsonContent = new(
         JsonSerializer.Serialize(new
         {
-            FirstName = ticket.FirstName,
-            LastName = ticket.LastName,
+            DriverFirstName = ticket.DriverFirstName,
+            DriverLastName = ticket.DriverLastName,
             CompanyName = ticket.CompanyName,
             ChemicalType = ticket.ChemicalType,
-            KilogramWeight = ticket.KilogramWeight
+            AmountInKilos = ticket.AmountInKilos
         }),
         Encoding.UTF8,
         "application/json");

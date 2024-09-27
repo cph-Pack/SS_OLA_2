@@ -5,24 +5,24 @@ namespace SS_OLA2_BACKEND
 {
     public class JobManager
     {
+        private DBManager _dBManager;
         private static Random random = new Random();
-        // add db connection
-        public JobManager() { }
+        
+        public JobManager(DBManager dBManager) 
+        { 
+            _dBManager = dBManager;
+        }
 
         // get shipment info about job type
         public Job CreateJob(JobType jobType) 
         {
-            int randomWarehouseId = random.Next(1, 6);
+            int storageLocation = random.Next(1, 6);
+            DateTime date = DateTime.Now;
+            string status = "Pending";
 
-            Job job = new Job() 
-            {
-                StorageLocation = new Warehouse(randomWarehouseId),
-                Date = DateTime.Now,
-                JobType = jobType,
-                Status = "Pending"
-            };
+            Job job = new Job(storageLocation, date, jobType, status);
 
-            // save in db
+            job = _dBManager.SaveJob(job);
             return job; 
         }
 
