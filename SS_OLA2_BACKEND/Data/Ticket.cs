@@ -1,7 +1,12 @@
-﻿namespace SS_OLA2_BACKEND.Data
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace SS_OLA2_BACKEND.Data
 {
     public class Ticket
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
         // Chauffør information
         public string DriverFirstName { get; set; }
         public string DriverLastName { get; set; }
@@ -11,10 +16,10 @@
 
         // Forsendelsesdetaljer
         public string ChemicalType { get; set; } // A, B eller C
-        public double AmountInKilos { get; set; } // Mængden i kilo
+        public int AmountInKilos { get; set; } // Mængden i kilo
 
         // Constructor til initialisering af ticket
-        public Ticket(string driverFirstName, string driverLastName, string companyName, string chemicalType, double amountInKilos)
+        public Ticket(string driverFirstName, string driverLastName, string companyName, string chemicalType, int amountInKilos)
         {
             // Initialiserer felterne
             DriverFirstName = driverFirstName;

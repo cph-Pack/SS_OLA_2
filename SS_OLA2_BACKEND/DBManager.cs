@@ -10,7 +10,7 @@ namespace SS_OLA2_BACKEND
         private readonly IMongoDatabase _database;
 
         private readonly IMongoCollection<Ticket> _ticketCollection;
-        private readonly IMongoCollection<Job> _jobColleciton;
+        private readonly IMongoCollection<Job> _jobCollection;
 
         public DBManager()
         {
@@ -18,7 +18,7 @@ namespace SS_OLA2_BACKEND
             _database = _client.GetDatabase("SS");
 
             _ticketCollection = _database.GetCollection<Ticket>("Tickets");
-            _jobColleciton = _database.GetCollection<Job>("Jobs");
+            _jobCollection = _database.GetCollection<Job>("Jobs");
         }
 
         public Ticket ValidateTicket(string driverFirstName, string driverLastName, string companyName, string chemicalType)
@@ -40,5 +40,10 @@ namespace SS_OLA2_BACKEND
             return ticket;
         }
 
+        internal Job SaveJob(Job job)
+        {
+            _jobCollection.InsertOne(job);
+            return job;
+        }
     }
 }

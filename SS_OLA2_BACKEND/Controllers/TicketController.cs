@@ -8,33 +8,33 @@ namespace SS_OLA2_BACKEND.Controllers
     [Route("[controller]")]
     public class TicketController : ControllerBase
     {
+        private readonly TicketService ticketService = new TicketService();
+
         // GET /ticket
         [HttpGet]
         public ActionResult<Ticket> Get()
         {
-            Ticket ticket = new Ticket();
-            {
-                ticket.FirstName = "Patrick";
-                ticket.LastName = "Diekmann";
-                ticket.CompanyName = "CPH-Pack";
-                ticket.ChemicalType = "A";
-                ticket.KilogramWeight = 1;
-            }
+            string firstName = "Patrick";
+            string lastName = "Diekmann";
+            string companyName = "CPH-Pack";
+            string chemicalType = "A";
+            int kilogramWeight = 1;
+
+            Ticket ticket = new Ticket(firstName,lastName, companyName, chemicalType, kilogramWeight);
             return Ok(ticket);
         }
 
         [HttpPost]
-        public ActionResult<Ticket> Create([FromBody] Ticket ticket)
+        public ActionResult<Job> Create([FromBody] Ticket ticket)
         {
             try
             {
-                return (Ok(ticket));
-
+                Job job = ticketService.ProcessTicket(ticket);
+                return (Ok(job));
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                return NotFound("error");
+                return NotFound(e);
             }
         }
     }
