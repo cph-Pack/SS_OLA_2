@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SS_OLA2_BACKEND.Data;
+using System.Formats.Asn1;
 
 namespace SS_OLA2_BACKEND.Controllers
 {
@@ -7,7 +8,7 @@ namespace SS_OLA2_BACKEND.Controllers
     [Route("[controller]")]
     public class TicketController : ControllerBase
     {
-        // GET api/ticket
+        // GET /ticket
         [HttpGet]
         public ActionResult<Ticket> Get()
         {
@@ -19,7 +20,22 @@ namespace SS_OLA2_BACKEND.Controllers
                 ticket.ChemicalType = "A";
                 ticket.KilogramWeight = 1;
             }
-           return Ok(ticket);
+            return Ok(ticket);
+        }
+
+        [HttpPost]
+        public ActionResult<Ticket> Create([FromBody] Ticket ticket)
+        {
+            try
+            {
+                return (Ok(ticket));
+
+            }
+            catch (Exception)
+            {
+
+                return NotFound("error");
+            }
         }
     }
 }
