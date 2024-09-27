@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SS_OLA2_BACKEND\SS_OLA2_BACKEND.csproj" />
+  </ItemGroup>
+
 </Project>
