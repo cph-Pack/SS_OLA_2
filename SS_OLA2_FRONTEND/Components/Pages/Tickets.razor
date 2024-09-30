@@ -1,5 +1,5 @@
 ﻿@page "/tickets"
-@using SS_OLA2_BACKEND.Data
+@using SS_OLA2_FRONTEND.Data
 @rendermode InteractiveServer
 
 <PageTitle>Testing</PageTitle>
@@ -18,7 +18,6 @@
     <br />
 
     <label for="CompanyName">Company Name:</label>
-    
     <InputText id="CompanyName" @bind-Value=ticket.CompanyName></InputText>
     <br />
 
@@ -41,11 +40,12 @@
     // This youtube video shows how most of the things work https://www.youtube.com/watch?v=zOqgJJO-XtU 
     // create an instance so we can bind the InputText tags to the models attributes
     Ticket ticket = new ();
+    Chemicals chemicals = new();
 
     public void HandleSubmit(EditContext context)
     {
         // remember to cast the context model to your class (Ticket) in this case
         Ticket ticket = (Ticket)context.Model;
-        Console.WriteLine($"{ticket.FirstName} {ticket.LastName} from {ticket.CompanyName} carries {ticket.Chemicals.Type_A}KG of chemical type A");
+        
     }
 }

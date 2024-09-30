@@ -10,9 +10,19 @@ namespace SS_OLA2_FRONTEND.Data
         public string LastName { get; set; }
         [Required]
         public string CompanyName { get; set; }
+
         [Required]
-        public string ChemicalType { get; set; }
-        [Required]
-        public int KilogramWeight { get; set; }
+        public Chemicals chemicals { get; set; }
     }
+
+    public class Chemicals
+    {
+        [Required]
+        public int Type_A { get; set; } = 0;
+
+        [Required]
+        public int Type_B { get; set;} = 0;
+
+        [Required]
+        public int Type_C { get; set;} = 0;
 }
